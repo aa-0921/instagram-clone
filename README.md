@@ -1,6 +1,8 @@
 # README
 
-help about ページ削除する！
+<!-- help about等不要な ページ削除する！ -->
+<!-- minitest削除する！ -->
+<!-- images/rails画像削除する！ -->
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

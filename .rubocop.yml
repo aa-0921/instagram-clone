@@ -13,11 +13,12 @@ LineLength:
 Airbnb/PhraseBundleKeys:
   Exclude:
     - spec/my_poorly_named_spec_file.rb
-    
+
 #rubocopで検証したくないフォルダを指定
 AllCops:
   TargetRubyVersion: 2.6.5
   Exclude:
+    - "node_modules/**/*"
     - "db/**/*"
     - "bin/*"
     - "config/environments/*"
