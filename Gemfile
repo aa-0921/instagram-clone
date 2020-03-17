@@ -29,13 +29,8 @@ group :development do
   gem 'rubocop-rspec', '1.30.1'
 end
 
-# rubocop-airbnb (3.0.2)
-# rubocop-performance (1.5.2)
-# rubocop-rails (2.3.2)
-# rubocop-rspec (1.38.1, 1.30.1)
-
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '4.0.0.rc1'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'capybara', '~> 2.13'
