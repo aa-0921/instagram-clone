@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "StaticPages", type: :feature do
   describe "Home page" do
     before do
-      visit static_pages_home_path
+      visit root_path
     end
 
     # HomeページにInstagram-cloneと表示されていること
@@ -19,21 +19,21 @@ RSpec.feature "StaticPages", type: :feature do
 
   describe 'Home' do
     specify '画面の表示' do
-      visit '/static_pages/home'
-      expect(page).to have_css('h1', text: 'Instagram-clone')
+      visit root_path
+      expect(page).to have_css('h2', text: 'Instagram-clone')
     end
   end
 
   describe 'Help' do
     specify '画面の表示' do
-      visit '/static_pages/help'
+      visit help_path
       expect(page).to have_css('h1', text: 'Help')
     end
   end
 
   describe 'about' do
     specify '画面の表示' do
-      visit '/static_pages/about'
+      visit about_path
       expect(page).to have_css('h1', text: 'About')
     end
   end

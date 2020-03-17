@@ -25,7 +25,14 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop-airbnb'
+  gem 'rubocop', '0.76.0'
+  gem 'rubocop-rspec', '1.30.1'
 end
+
+# rubocop-airbnb (3.0.2)
+# rubocop-performance (1.5.2)
+# rubocop-rails (2.3.2)
+# rubocop-rspec (1.38.1, 1.30.1)
 
 group :test do
   gem 'rspec-rails'
