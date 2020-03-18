@@ -1,9 +1,12 @@
 # README
 
+<!-- HTML等インデントを正す-->
+
 <!-- help about等不要な ページ削除する！ -->
 <!-- minitest削除する！ -->
 <!-- images/rails画像削除する！ -->
 <!-- /test/minitestファイル削除 -->
+<!-- gravatarの画像を変更する。現在はチュートリアルのサンプル-->
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
