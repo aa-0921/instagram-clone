@@ -6,16 +6,16 @@ ruby '2.6.5'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'bcrypt', '3.1.12'
 gem 'bootstrap-sass', '3.3.7'
-gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
-
+gem 'jquery-rails', '4.3.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  gem 'sqlite3', '1.4.2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'spring-commands-rspec'
 end
@@ -30,6 +30,9 @@ group :development do
   gem 'rubocop-rspec', '1.30.1'
 end
 
+group :production do
+  gem 'pg', '1.2.3'
+end
 group :test do
   gem 'rspec-rails', '4.0.0.rc1'
   gem 'factory_bot_rails'

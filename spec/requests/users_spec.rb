@@ -32,10 +32,10 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of :password }
   it { is_expected.to validate_length_of(:password).is_at_least(6) }
 
-  # 重複したメールアドレスなら無効な状態であること ・・・(*)
+  # 重複したメールアドレスなら無効な状態であること
   it "is invalid with a duplicate email adress" do
-    FactoryBot.create(:user, email: "aaron@example.com")
-    user = FactoryBot.build(:user, email: "Aaron@example.com")
+    FactoryBot.create(:user, email: "insta@example.com")
+    user = FactoryBot.build(:user, email: "INSTA@example.com")
     user.valid?
     expect(user.errors[:email]).to include("has already been taken")
   end
