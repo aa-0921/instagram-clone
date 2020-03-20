@@ -1,5 +1,6 @@
 module LoginSupport
   def valid_login(user)
+    puts "呼び出しの確認"
     visit root_path
 
     click_link "Log in"

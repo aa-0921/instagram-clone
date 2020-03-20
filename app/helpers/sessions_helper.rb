@@ -8,4 +8,9 @@ module SessionsHelper
       @current_user ||= User.find_by(id: session[:user_id])
     end
   end
+
+  def logged_in?
+    # !否定演算子でcurrent_userが空でないならtrue
+    !current_user.nil?
+  end
 end
