@@ -4,12 +4,19 @@ RSpec.feature "Login", type: :feature, js: true do
   let(:user) { FactoryBot.create(:user) }
 
   # ログインに成功すること
-  scenario "user successfully login" do
+  scenario "user successfully login and logout" do
     valid_login(user)
     # p expect(current_path)
     # p user_path(user)
     expect(current_path).to eq user_path(user)
-    expect(page).not_to have_content "ログインする"
+    expect(page).not_to have_content "Log in"
+
+    # ログアウトのテスト
+    click_link "Account"
+    click_link "Log out"
+
+    expect(current_path).to eq root_path
+    expect(page).to have_content "Log in"
   end
 
   # 無効な情報ではログインに失敗すること
