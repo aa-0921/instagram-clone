@@ -6,7 +6,8 @@ RSpec.feature "Login", type: :feature, js: true do
   # ログインに成功すること
   scenario "user successfully login" do
     valid_login(user)
-
+    p expect(current_path)
+    p user_path(user)
     expect(current_path).to eq user_path(user)
     expect(page).not_to have_content "ログインする"
   end
