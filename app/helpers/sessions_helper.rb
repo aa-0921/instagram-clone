@@ -11,8 +11,8 @@ module SessionsHelper
 
   @current_userを返す為のメソッド
   def current_user
-    if (user_id = session[:user_id]) #ユーザーIDでのセッションが存在すれば
-      @current_user ||= User.find_by(id:user_id]) 
+    if (user_id = session[:user_id]) # ユーザーIDでのセッションが存在すれば
+      @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
       ユーザーが存在してかつ、トークンでの認証が成功すれば
@@ -28,8 +28,15 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def forget(user)
+    user.forget
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
+  end
+
   # 現在のユーザーをログアウトする
   def log_out
+    forget(current_user)
     session.delete(:user_id)
     @current_user = nil
   end

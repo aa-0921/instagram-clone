@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class User < ApplicationRecord
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
@@ -11,7 +13,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
   def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost? BCrypt::Engine::MIN_COST :BCrypt::Password.create(string, cost: cost)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
   end
 
   def User.new_token
@@ -27,5 +30,10 @@ class User < ApplicationRecord
   # 渡されたトークンがダイジェストと一致したらtrueを返す
   def authenticated?(remember_token)
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def forget
+    # リメンバーダイジェストを空に
+    update_attribute(:remember_digest, nil)
   end
 end
