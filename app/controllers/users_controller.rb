@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   # ログインしていないユーザーだと、警告が表示され、ログイン画面に飛ばされる。
   def logged_in(user)
     unless logged_in?
+      store_location # 元々表示しようとしていたページをセッションに記憶
       flash[:danger] = "Please log in"
       redirect_to login_url
     end
