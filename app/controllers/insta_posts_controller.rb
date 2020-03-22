@@ -1,0 +1,2 @@
+class InstaPostsController < ApplicationController
+end
