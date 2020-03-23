@@ -4,5 +4,8 @@
   <span class="content"><%= insta_post.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(insta_post.created_at) %> ago.
+    <%= link_to "delete", insta_posts, method: :get,
+                            data: { confirm: "You sure?" } %>
+    <% end %>
   </span>
 </li>
