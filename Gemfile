@@ -39,6 +39,7 @@ group :production do
   gem 'pg', '1.2.3'
   gem 'fog', '1.42'
 end
+
 group :test do
   gem 'rspec-rails', '4.0.0.rc1'
   gem 'factory_bot_rails'
