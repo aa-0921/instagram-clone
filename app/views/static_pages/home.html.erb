@@ -2,12 +2,16 @@
   <div class="row">
     <aside class="col-md-4">
       <section class="user_info">
-        <%= render 'shored/user_info' %>
+        <%= render 'shared/user_info' %>
       </section>
       <section class="insta_post_form">
         <%= render 'shared/insta_post_form' %>
       </section>
     </aside>
+    <div class="col-md-8">
+      <h3>Post Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
   </div>
 <% else %>
   <div class="center jumbotron">
@@ -19,6 +23,7 @@
       Instagram-clone
     </h2>
 
+    @insta_post = current_user.insta_posts.build if logged_in?
     <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
   </div>
 
