@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @insta_posts = @user.insta_posts.paginate(page: params[:page])
   end
 
   def new

@@ -1,6 +1,7 @@
 require 'bcrypt'
 
 class User < ApplicationRecord
+  has_many :insta_posts, dependent: :destroy
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
@@ -27,7 +28,7 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  # 渡されたトークンがダイジェストと一致したらtrueを返す
+  # 渡されたパーシャルトークンがダイジェストと一致したらtrueを返す
   def authenticated?(remember_token)
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
@@ -36,5 +37,9 @@ class User < ApplicationRecord
   def forget
     # リメンバーダイジェストを空に
     update_attribute(:remember_digest, nil)
+  end
+
+  def feed
+    InstaPost.where("user_id = ?", id)
   end
 end
