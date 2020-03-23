@@ -13,13 +13,13 @@ module SessionsHelper
     user == current_user
   end
 
-  @current_userを返す為のメソッド
+  # @current_userを返す為のメソッド
   def current_user
     if (user_id = session[:user_id]) # ユーザーIDでのセッションが存在すれば
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
-      ユーザーが存在してかつ、トークンでの認証が成功すれば
+      # ユーザーが存在してかつ、トークンでの認証が成功すれば
       if user && user.authneticated?(cookies[:remember_token])
         log_in user
         @current_user = user
