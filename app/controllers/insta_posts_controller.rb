@@ -22,7 +22,7 @@ class InstaPostsController < ApplicationController
   private
 
   def insta_post_params
-    params.require(:insta_post).permit(:content)
+    params.require(:insta_post).permit(:content, :picture)
   end
 
   def correct_user
