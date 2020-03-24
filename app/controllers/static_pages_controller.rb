@@ -2,7 +2,15 @@ class StaticPagesController < ApplicationController
   def home
     if logged_in?
       @insta_post = current_user.insta_posts.build
-      @feed_items = current_user.feed.paginate(page: params[:page])
+
+      if params[:q]
+        relation = InstaPost.joins(:user)
+        @feed_items = relation.merge(User.search_by_keyword(params[:q])).
+          or(relation.search_by_keyword(params[:q])).
+          paginate(page: params[:page])
+      else
+        @feed_items = current_user.feed.paginate(page: params[:page])
+      end
     end
   end
 
