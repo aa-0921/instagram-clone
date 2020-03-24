@@ -13,6 +13,12 @@ class InstaPostsController < ApplicationController
     end
   end
 
+  def show
+    @insta_post = Insta_post.find(params[:id])
+    @comment = Comemnt.new
+    @user = User.find_by(id: @insta_post.user_id)
+  end
+
   def destroy
     @insta_post.destroy
     flash[:success] = "Post deleted"

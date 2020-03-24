@@ -34,7 +34,7 @@ count = 1
 
 users.each do |user|
   content = Faker::Lorem.sentence
-  emoji = Faker::SlackEmoji.emoji
+  emoji = Faker::Lorem.multibyte
 
   user.insta_posts.create!(content: "#{content}#{emoji}",
                             picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{count}.jpg")) 

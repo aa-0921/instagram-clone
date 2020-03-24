@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :insta_posts, only: [:create, :destroy]
+  resources :insta_posts, only: [:create, :destroy, :show] do
+    resources :comments
+  end
   resources :relationships, only: [:create, :destroy]
 end

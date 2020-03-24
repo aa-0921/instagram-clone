@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_132726) do
+ActiveRecord::Schema.define(version: 2020_03_24_124135) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "insta_post_id"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["insta_post_id"], name: "index_comments_on_insta_post_id"
+    t.index ["user_id", "insta_post_id", "created_at"], name: "index_comments_on_user_id_and_insta_post_id_and_created_at"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "insta_posts", force: :cascade do |t|
     t.text "content"
@@ -43,5 +54,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_132726) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "comments", "users"
   add_foreign_key "insta_posts", "users"
 end
