@@ -1,3 +1,5 @@
+Faker::Config.locale = :ja
+
 User.create!(name: "Example User",
              email: "example@example.org",
              password:             "foobar",
@@ -14,11 +16,44 @@ User.create!(name: "Example User",
                password_confirmation: password)
 end
 
-users = User.order(:created_ad).take(6)
-50.times do
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.insta_posts.create!(content: content) }
+
+# users = User.order(:created_at).take(6)
+
+# 50.times do |n|
+#   content = Faker::Lorem.sentence(8)
+#   users.each { |user| user.insta_posts.create!(content: content,
+#                                                picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{n}.jpg")) }
+# end
+
+
+
+
+
+users = User.order(:created_at).take(50)
+count = 1
+
+users.each do |user|
+  content = Faker::Lorem.sentence
+  emoji = Faker::SlackEmoji.emoji
+
+  user.insta_posts.create!(content: "#{content}#{emoji}",
+                            picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{count}.jpg")) 
+  count += 1
 end
+
+
+
+
+
+
+
+
+
+
+  # content = Faker::Lorem.words
+
+  # InstaPost.create(picture: open("./db/seeds/images/image-#{count}.jpeg"))
+
 
 # リレーションシップ
 users = User.all
