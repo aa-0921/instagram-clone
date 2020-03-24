@@ -2,8 +2,10 @@
   <%= link_to gravatar_for(insta_post.user, size: 50), insta_post.user %>
   <span class="user"><%= link_to insta_post.user.name, insta_post.user %></span>
   <span class="content">
-    <%= insta_post.content %>
+   
     <%= image_tag insta_post.picture.url if insta_post.picture? %>
+     <span class="user"><%= link_to insta_post.user.name, insta_post.user %></span>
+    <%= insta_post.content %>
   </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(insta_post.created_at) %> ago.
