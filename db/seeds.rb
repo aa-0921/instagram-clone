@@ -33,7 +33,7 @@ users = User.order(:created_at).take(50)
 count = 1
 
 users.each do |user|
-  content = Faker::Lorem.sentence
+  content = Faker::Lorem.sentence(word_count: 3)
   emoji = Faker::Lorem.multibyte
 
   user.insta_posts.create!(content: "#{content}#{emoji}",

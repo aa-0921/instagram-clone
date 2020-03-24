@@ -1,11 +1,11 @@
-<div id="insta_post-<%= #{insta_post.id} %>">
+<div id="insta_post-<%= #{@insta_post.id} %>">
   <%= link_to gravatar_for(@insta_post.user, size: 120), @insta_post.user ,:class=>"user-name" %>
-  <br/>
-  <span class="user"><%= link_to "#{@insta_post.user.name}", @insta_post.user %></span>
-  <br/>
+  <span class="user">
+    <%= link_to "#{@insta_post.user.name}", @insta_post.user %>
+  </span>
   <span class="insta_post_content">
     <%= @insta_post.content %>
-    <%= image_tag @insta_post.picture.url if @insta_post.picture? %>
+    <%= image_tag @insta_post.picture.url %>
   </span>
 
   <span class="timestamp">

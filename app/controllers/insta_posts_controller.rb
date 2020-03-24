@@ -14,8 +14,8 @@ class InstaPostsController < ApplicationController
   end
 
   def show
-    @insta_post = Insta_post.find(params[:id])
-    @comment = Comemnt.new
+    @insta_post = InstaPost.find(params[:id])
+    @comment = Comment.new
     @user = User.find_by(id: @insta_post.user_id)
   end
 
