@@ -5,9 +5,13 @@ ruby '2.6.5'
 
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'bcrypt', '3.1.12'
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
 gem 'faker', '2.10.2'
 gem 'carrierwave', '1.2.2'
 gem 'mini_magick', '4.7.0'
+gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.3.7'
@@ -28,6 +32,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  # gem 'rails-footnotes', '4.1.5'
 
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

@@ -1,35 +1,10 @@
-<div id="insta_post-<%= #{@insta_post.id} %>">
-  <%= link_to gravatar_for(@insta_post.user, size: 120), @insta_post.user ,:class=>"user-name" %>
-  <span class="user">
-    <%= link_to "#{@insta_post.user.name}", @insta_post.user %>
-  </span>
-  <span class="insta_post_content">
-    <%= @insta_post.content %>
-    <%= image_tag @insta_post.picture.url %>
-  </span>
 
-  <span class="timestamp">
-    Commented <%= time_ago_in_words(insta_post.created_at) %> ago.
-    <% if current_user?(insta_post.user) %>
-      <%= link_to "delete", insta_post, method: :delete,
-                              data: { confirm: "You sure?" } %>
-    <% end %>
-  </span>
-</div>
-<div class="comment_index">
+  
   <h3>Comments</h3>
-  <% @insta_post.comments.each do |comment| %>
-    <%= link_to gravatar_for(commnt.user, size: 50), comment.user %>
-    <p>
-      <%= link_to "#{commment.user.name}" , @user %>: <%= comment.body %>
-        <span>
-          <%= image_tag comment.picture.url if comment.picture? %>
-        </span>
-        <span class="batu">
-          <%= link_to "x", [@insta_post,comment], method: :delete if current_user?(comment.user) %>
-        </span>
-    </p>
+ <% @insta_post.comment.each do |comment| %>
+  <span>
+    <%= image_tag comment.picture.url if comment.picture? %>
+  </span>
 
-    <hr/>
-  <% end %>
-</div>
+
+<% end %>
