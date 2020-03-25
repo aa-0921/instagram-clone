@@ -1,7 +1,7 @@
 
   
   <h3>Comments</h3>
- <% @insta_post.comment.each do |comment| %>
+ <% @insta_post.comments.each do |comment| %>
   <span>
     <%= image_tag comment.picture.url if comment.picture? %>
   </span>
