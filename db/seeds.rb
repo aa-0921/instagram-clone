@@ -41,16 +41,28 @@ users.each do |user|
   count += 1
 end
 
-
-50.times do |n|
-  user_id = n + 1
-  insta_post_id = 50 - n
-  body = Faker::Lorem.sentence(word_count: 2)
-  Comment.create!(user_id: user_id,
-                  insta_post_id: insta_post_id,
-                  body: body,
-                  picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{n + 1}.jpg"))
+3.times do
+  50.times do
+    user_id = rand(1..50)
+    insta_post_id = rand(1..50)
+    body = Faker::Lorem.sentence(word_count: 2)
+    Comment.create!(user_id: user_id,
+                    insta_post_id: insta_post_id,
+                    body: body,
+                    picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{rand(1..50)}.jpg"))
+  end
 end
+
+
+#  50.times do |n|
+#     user_id = n + 1
+#     insta_post_id = 50 - n
+#     body = Faker::Lorem.sentence(word_count: 2)
+#     Comment.create!(user_id: user_id,
+#                     insta_post_id: insta_post_id,
+#                     body: body,
+#                     picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{n + 1}.jpg"))
+#   end
 
 
 # リレーションシップ
