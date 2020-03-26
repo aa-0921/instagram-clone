@@ -37,22 +37,20 @@ users.each do |user|
   emoji = Faker::Lorem.multibyte
 
   user.insta_posts.create!(content: "#{content}#{emoji}",
-                            picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{count}.jpg")) 
+                           picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{count}.jpg"))
   count += 1
 end
 
 
-
-
-
-
-
-
-
-
-  # content = Faker::Lorem.words
-
-  # InstaPost.create(picture: open("./db/seeds/images/image-#{count}.jpeg"))
+50.times do |n|
+  user_id = n + 1
+  insta_post_id = 50 - n
+  body = Faker::Lorem.sentence(word_count: 2)
+  Comment.create!(user_id: user_id,
+                  insta_post_id: insta_post_id,
+                  body: body,
+                  picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{n + 1}.jpg"))
+end
 
 
 # リレーションシップ
