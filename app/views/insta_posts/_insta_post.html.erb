@@ -3,7 +3,8 @@
   <span class="user"><%= link_to insta_post.user.name, insta_post.user %></span>
   <span class="content">
    
-    <%= image_tag insta_post.picture.url if insta_post.picture? %>
+    <%= link_to image_tag(insta_post.picture.url), insta_post_path(id: insta_post.id) %>
+    
      <span class="user"><%= link_to insta_post.user.name, insta_post.user %></span>
     <%= insta_post.content %>
   </span>
