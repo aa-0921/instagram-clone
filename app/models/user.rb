@@ -26,7 +26,7 @@ class User < ApplicationRecord
   validates :email, presence: true, unless: :uid?, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  has_secure_password validations: false
+  has_secure_password
   validates :password, presence: true, unless: :uid?, length: { minimum: 6 }, allow_nil: true
 
   def User.digest(string)
@@ -44,7 +44,6 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  # 渡されたパーシャルトークンがダイジェストと一致したらtrueを返す
   def authenticated?(remember_token)
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
