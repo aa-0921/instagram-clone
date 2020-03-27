@@ -21,11 +21,12 @@
     <% end %>
 
     <p>
-      <%= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
-      <span class="fa fa-facebook"></span> Facebookアカウントでログイン
+      <%#= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
+      <%# <span class="fa fa-facebook"></span> Facebookアカウントでログイン
       <% end %>
     </p>
-    <%= link_to "Facebookでログイン", user_facebook_omniauth_authorize_path %>
+
+    <%#= link_to "Facebookでログイン", user_facebook_omniauth_authorize_path %>
     <%= render "/users/shared/links" %>
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
   </div>
