@@ -15,6 +15,11 @@
                                     data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+  <div class="like-counter">
+    <span class="like-display">
+      <%= pluralize(@insta_post.likes.count, "like") %>
+    </span>
+  </div>
 </div>
 <h3>Comments</h3>
 <div class="comment_index">

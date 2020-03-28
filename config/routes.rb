@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
   root 'static_pages#home'
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   get 'auth/:provider/callback', to: 'sessions#create'
-  # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  resources :likes, only: [:create, :destroy]
   resources :users do
     member do
       get :following, :followers

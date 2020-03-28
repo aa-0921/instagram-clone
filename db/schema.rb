@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_100036) do
+ActiveRecord::Schema.define(version: 2020_03_28_110426) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -30,8 +30,19 @@ ActiveRecord::Schema.define(version: 2020_03_25_100036) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "picture"
+    t.integer "likes_count", default: 0, null: false
     t.index ["user_id", "created_at"], name: "index_insta_posts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_insta_posts_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "insta_post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["insta_post_id"], name: "index_likes_on_insta_post_id"
+    t.index ["user_id", "insta_post_id"], name: "index_likes_on_user_id_and_insta_post_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

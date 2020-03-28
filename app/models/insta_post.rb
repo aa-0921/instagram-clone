@@ -9,7 +9,22 @@ class InstaPost < ApplicationRecord
   # validates :picture, presence: true
   validates :content, presence: true, length: { maximum: 140 }
   validate :picture_size
+  has_many :likes, dependent: :destroy
+  has_many :likes_users, through: :likes, source: :user
   has_many :comments, dependent: :destroy
+
+  def like?(user)
+    likes_users.include?(user)
+  end
+
+  # マイクロポストをいいねする
+  def like(user)
+    likes.create(user_id: user.id)
+  end
+
+  def unlike(user)
+    likes.find_by(user_id: user.id).destroy
+  end
 
   private
 
