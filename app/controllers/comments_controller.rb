@@ -11,9 +11,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comments.find_by(id: params[:id])
+    @comment = Comment.find_by(id: params[:id])
+    # binding.pry
     @comment.destroy
     redirect_to request.referrer || root_url
+    flash[:success] = "comment delete success"
   end
 
   private
