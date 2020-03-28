@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.Comment.find_by(id: params[:id])
+    @comment = Comments.find_by(id: params[:id])
     @comment.destroy
     redirect_to request.referrer || root_url
   end
