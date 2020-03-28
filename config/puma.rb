@@ -12,6 +12,11 @@ threads min_threads_count, max_threads_count
 
 # port        ENV.fetch("PORT") { 3000 }
 
+# ssl_bind "0.0.0.0", "3000", {
+#   cert: "config/certs/localhost.pem",
+#   key: "config/certs/localhost-key.pem",
+# }
+
 # Specifies the `environment` that Puma will run in.
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
@@ -43,8 +48,8 @@ plugin :tmp_restart
 
 # preload_app!
 
-rackup      DefaultRackup
-port        ENV['PORT'] || 3000
+rackup DefaultRackup
+port ENV['PORT'] || 3000
 # environment ENV['RACK_ENV'] || 'development'
 
 on_worker_boot do

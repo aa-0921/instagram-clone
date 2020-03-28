@@ -6,11 +6,12 @@ ruby '2.6.5'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'bcrypt', '3.1.12'
 gem 'bootstrap-social-rails'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'font-awesome-rails'
 gem 'faker', '2.10.2'
 gem 'carrierwave', '1.2.2'
 gem 'mini_magick', '4.7.0'
-gem 'devise'
+# gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'will_paginate',           '3.1.7'
@@ -28,6 +29,9 @@ group :development, :test do
   gem 'sqlite3', '1.4.2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'spring-commands-rspec'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
 end
 
 group :development do

@@ -9,9 +9,13 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_back_or user
     else # 既存パタ-ン
+
       user = User.find_by(email: params[:session][:email].downcase)
 
+      # binding.pry
+
       if user && user.authenticate(params[:session][:password])
+        # params[:session][:password]
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         redirect_back_or user
