@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
   get 'auth/:provider/callback', to: 'sessions#create'
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  # devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users do
     member do
       get :following, :followers
