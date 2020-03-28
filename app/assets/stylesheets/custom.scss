@@ -230,7 +230,9 @@ aside {
   padding: 0;
 }
 
-
+div#follow_form {
+  border: solid 2px #426545;
+}
 
 
 
@@ -299,6 +301,10 @@ input {
 }
 
 /* insta_posts */
+ol.insta_posts>li {
+  margin: 10px 0;
+  padding: -10px 0;
+}
 
 .insta_posts {
   list-style: none;
