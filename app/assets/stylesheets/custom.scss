@@ -379,3 +379,19 @@ body {
 .btn-facebook {
   margin-top: 20px;
 }
+
+/*-----------------like_button----------------*/
+div.timestamp-and-like {
+  display: flex;
+  align-items: center;
+}
+
+span.like {
+  margin: 0 18px 0 auto;
+}
+
+span.like-display {
+  font-size: 3em;
+  border: solid 2px #426579;
+
+}

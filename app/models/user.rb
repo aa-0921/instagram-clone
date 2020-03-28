@@ -8,6 +8,7 @@ class User < ApplicationRecord
   scope :search_by_keyword, -> (keyword) {
     where("users.name LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?
   }
+  has_many :likes, dependent: :destroy
   has_many :insta_posts, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",

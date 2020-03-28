@@ -1,4 +1,4 @@
-<li id="insta_post-<%= insta_post.id %>" class="col-md-4">
+<li id="insta_post-<%= insta_post.id %>" data-micropost-id="<%= insta_post.id %>" class="col-md-4">
   <%#= link_to gravatar_for(insta_post.user, size: 50), insta_post.user %>
   <%# <span class="user"><%= link_to insta_post.user.name, insta_post.user %>
   <%# </span> %>
@@ -9,11 +9,14 @@
     <span class="user"><%= link_to insta_post.user.name, insta_post.user %></span>
     <%= insta_post.content %>
   </span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(insta_post.created_at) %> ago.
-    <% if current_user?(insta_post.user) %>
-    <%= link_to "delete", insta_post, method: :delete,
+  <div class="timestamp-and-like">
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(insta_post.created_at) %> ago.
+      <% if current_user?(insta_post.user) %>
+      <%= link_to "delete", insta_post, method: :delete,
                               data: { confirm: "You sure?" } %>
-    <% end %>
-  </span>
+      <% end %>
+    </span>
+    <%= render "likes/like", insta_post: insta_post  %>
+  </div>
 </li>
