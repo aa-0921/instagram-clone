@@ -1,6 +1,7 @@
 <li id="insta_post-<%= insta_post.id %>" class="col-md-4">
-  <%= link_to gravatar_for(insta_post.user, size: 50), insta_post.user %>
-  <span class="user"><%= link_to insta_post.user.name, insta_post.user %></span>
+  <%#= link_to gravatar_for(insta_post.user, size: 50), insta_post.user %>
+  <%# <span class="user"><%= link_to insta_post.user.name, insta_post.user %>
+  <%# </span> %>
   <span class="content">
 
     <%= link_to image_tag(insta_post.picture.url), insta_post_path(id: insta_post.id) %>
