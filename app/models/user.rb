@@ -3,8 +3,8 @@ require 'bcrypt'
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+  # # devise :database_authenticatable, :registerable,
+  #        :recoverable, :rememberable, :validatable, :omniauthable
   scope :search_by_keyword, -> (keyword) {
     where("users.name LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?
   }
@@ -20,14 +20,15 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
-  validates :name, presence: true, unless: :uid?, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 50 } # unless: :uid?,
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
-  validates :email, presence: true, unless: :uid?, length: { maximum: 255 },
+  validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
+                    uniqueness: { case_sensitive: false } # unless: :uid?,
   has_secure_password
-  validates :password, presence: true, unless: :uid?, length: { minimum: 6 }, allow_nil: true
+  # validations: false
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true # unless: :uid?,
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -76,19 +77,19 @@ class User < ApplicationRecord
 
   # auth hashからユーザ情報を取得
   # データベースにユーザが存在するならユーザ取得して情報更新する；存在しないなら新しいユーザを作成する
-  def self.find_or_create_from_auth(auth)
-    provider = auth[:provider]
-    uid = auth[:uid]
-    name = auth[:info][:name]
-    image = auth[:info][:image]
-    # 必要に応じて情報追加してください
+  # def self.find_or_create_from_auth(auth)
+  #   provider = auth[:provider]
+  #   uid = auth[:uid]
+  #   name = auth[:info][:name]
+  #   image = auth[:info][:image]
+  #   # 必要に応じて情報追加してください
 
-    # ユーザはSNSで登録情報を変更するかもしれので、毎回データベースの情報も更新する
-    find_or_create_by(provider: provider, uid: uid) do |user|
-      user.username = name
-      user.image_path = image
-    end
-  end
+  #   # ユーザはSNSで登録情報を変更するかもしれので、毎回データベースの情報も更新する
+  #   find_or_create_by(provider: provider, uid: uid) do |user|
+  #     user.username = name
+  #     user.image_path = image
+  #   end
+  # end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
