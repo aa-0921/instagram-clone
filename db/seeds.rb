@@ -2,8 +2,8 @@ Faker::Config.locale = :ja
 
 User.create!(name: "Example User",
              email: "example@example.org",
-             password:             "foobar",
-             password_confirmation:"foobar",
+             password:             "example",
+             password_confirmation:"example",
              admin: true)
 
 99.times do |n|
