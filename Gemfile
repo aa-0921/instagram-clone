@@ -52,6 +52,8 @@ end
 group :production do
   gem 'pg', '1.2.3'
   gem 'fog', '1.42'
+  gem 'rails_12factor', '0.0.2'
+  gem 'fog-aws'
 end
 
 group :test do

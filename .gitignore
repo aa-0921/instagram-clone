@@ -35,6 +35,6 @@
 yarn-debug.log*
 .yarn-integrity
 
-/public/uploads/
+# /public/uploads/
 
 /config/certs/*
