@@ -1,32 +1,11 @@
 # README
-<!-- 最終的にコメント等は消す-->
-<!-- コントローラーの不要なメソッドは消す-->
-<!-- HTML等インデントを正す-->
-<!-- help about等不要な ページ削除する！ -->
-<!-- minitest削除する！ -->
-<!-- images/rails画像削除する！ -->
-<!-- /test/minitestファイル削除 -->
-<!-- gravatarの画像を変更する。現在はチュートリアルのサンプル-->
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+・自分が苦労した点
+  -jacascriptの知識が足りていない為に、いいね機能実装時に発生した、表示ズレの問題について、単純な間違いを見つけることに時間がかかってしまった。
+  -herokuへのデプロイ後、画像を表示できずに、その原因がS3等のストレージを活用していない事だと気づけなかった。
+  
 
-Things you may want to cover:
-
-- Ruby version
-
-- System dependencies
-
-- Configuration
-
-- Database creation
-
-- Database initialization
-
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
+・学んだ点
+  -seedを使ったデータの挿入について楽しみながら、バリエーションを増やすことができた。
+  -
+・自慢したい・相談したい点
