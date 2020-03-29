@@ -392,10 +392,6 @@ body {
 }
 
 /*-----------------like_button----------------*/
-// div>span.like>span.like {
-//   margin: -10px 0;
-// }
-
 
 div.timestamp-and-like {
   display: flex;
@@ -410,4 +406,11 @@ span.like-display {
   font-size: 3em;
   border: solid 2px #426579;
 
+}
+
+/*-----------------modal----------------*/
+
+div.modal-body>a>img {
+  display: block;
+  margin: auto;
 }

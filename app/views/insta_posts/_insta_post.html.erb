@@ -3,9 +3,9 @@
   <%# <span class="user"><%= link_to insta_post.user.name, insta_post.user %>
   <%# </span> %>
   <span class="content">
-
-    <%= link_to image_tag(insta_post.picture.url), insta_post_path(id: insta_post.id) %>
-
+    <a class="btn" data-toggle="modal" data-target="#Modal-<%= insta_post.id %>">
+      <%= image_tag(insta_post.picture.url) %>
+    </a>
     <span class="user"><%= link_to insta_post.user.name, insta_post.user %></span>
     <%= insta_post.content %>
   </span>
@@ -22,3 +22,24 @@
     </span>
   </div>
 </li>
+
+<!--------------------modal-------------------->
+
+<div class="modal fade" id="Modal-<%= insta_post.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Click to comment</h4>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <%= link_to image_tag(insta_post.picture.url, size: '450x450'), insta_post_path(id: insta_post.id) %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
