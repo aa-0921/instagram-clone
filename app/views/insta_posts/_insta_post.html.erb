@@ -26,7 +26,7 @@
 <!--------------------modal-------------------->
 
 <div class="modal fade" id="Modal-<%= insta_post.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="myModalLabel">Click to comment</h4>
@@ -34,7 +34,10 @@
       </div>
       <div class="modal-body">
         <%= link_to image_tag(insta_post.picture.url, size: '450x450'), insta_post_path(id: insta_post.id) %>
-
+        <span class="content">
+          <span class="user"><%= link_to insta_post.user.name, insta_post.user %></span>
+          <%= insta_post.content %>
+        </span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">close</button>

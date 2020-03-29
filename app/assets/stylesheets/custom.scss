@@ -414,3 +414,21 @@ div.modal-body>a>img {
   display: block;
   margin: auto;
 }
+
+.modal-work {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.modal-dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  margin: auto;
+  pointer-events: none;
+}
+
+.modal-content {
+  pointer-events: all;
+}
