@@ -16,19 +16,6 @@ User.create!(name: "Example User",
                password_confirmation: password)
 end
 
-
-# users = User.order(:created_at).take(6)
-
-# 50.times do |n|
-#   content = Faker::Lorem.sentence(8)
-#   users.each { |user| user.insta_posts.create!(content: content,
-#                                                picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{n}.jpg")) }
-# end
-
-
-
-
-
 users = User.order(:created_at).take(50)
 count = 1
 
@@ -37,7 +24,7 @@ users.each do |user|
   emoji = Faker::Lorem.multibyte
 
   user.insta_posts.create!(content: "#{content}#{emoji}",
-                           picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{count}.jpg"))
+                           picture: open("db/seeds/images/image-#{count}.jpg"))
   count += 1
 end
 
@@ -50,20 +37,9 @@ end
     Comment.create!(user_id: user_id,
                     insta_post_id: insta_post_id,
                     body: "#{body}#{emoji}",
-                    picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{rand(1..50)}.jpg"))
+                    picture: open("db/seeds/images/image-#{rand(1..50)}.jpg"))
   end
 end
-
-
-#  50.times do |n|
-#     user_id = n + 1
-#     insta_post_id = 50 - n
-#     body = Faker::Lorem.sentence(word_count: 2)
-#     Comment.create!(user_id: user_id,
-#                     insta_post_id: insta_post_id,
-#                     body: body,
-#                     picture: open("/Users/aa/environment/instagram-clone/db/seeds/images/image-#{n + 1}.jpg"))
-#   end
 
 
 # リレーションシップ
