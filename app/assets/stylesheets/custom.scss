@@ -252,9 +252,7 @@ select,
   @include box_sizing;
 }
 
-input {
-  height: auto !important;
-}
+input {}
 
 
 #error_explanation {
@@ -394,6 +392,11 @@ body {
 }
 
 /*-----------------like_button----------------*/
+div>span.like>span.like {
+  margin: -10px 0;
+}
+
+
 div.timestamp-and-like {
   display: flex;
   align-items: center;
