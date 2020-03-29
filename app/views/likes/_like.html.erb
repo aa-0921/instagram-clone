@@ -1,18 +1,18 @@
 <% if !current_user?(insta_post.user) %>
-<span class="like">
-  <% if insta_post.like?(current_user) %>
-  <%= form_for(insta_post.likes.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
-  <%= button_tag(class: "btn btn-default btn-xs") do %>
-  <%= content_tag :span, "#{insta_post.likes_count}", class: "glyphicon glyphicon-heart" %>
-  <% end %>
-  <% end %>
-  <% else %>
-  <%= form_for(insta_post.likes.build, remote: true) do |f| %>
-  <div><%= hidden_field_tag :insta_post_id, insta_post.id %></div>
-  <%= button_tag(class: "btn btn-default btn-xs") do %>
-  <%= content_tag :span, "#{insta_post.likes_count}", class: "glyphicon glyphicon-heart-empty" %>
-  <% end %>
-  <% end %>
-  <% end %>
-</span>
+
+<% if insta_post.like?(current_user) %>
+<%= form_for(insta_post.likes.find_by(user_id: current_user.id), method: :delete, remote: true) do |f| %>
+<%= button_tag(class: "btn btn-default btn-xs") do %>
+<%= content_tag :span, "#{insta_post.likes_count}", class: "glyphicon glyphicon-heart" %>
+<% end %>
+<% end %>
+<% else %>
+<%= form_for(insta_post.likes.build, remote: true) do |f| %>
+<div><%= hidden_field_tag :insta_post_id, insta_post.id %></div>
+<%= button_tag(class: "btn btn-default btn-xs") do %>
+<%= content_tag :span, "#{insta_post.likes_count}", class: "glyphicon glyphicon-heart-empty" %>
+<% end %>
+<% end %>
+<% end %>
+
 <% end %>

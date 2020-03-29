@@ -17,6 +17,8 @@
                               data: { confirm: "You sure?" } %>
       <% end %>
     </span>
-    <%= render "likes/like", insta_post: insta_post  %>
+    <span class="like">
+      <%= render "likes/like", insta_post: insta_post  %>
+    </span>
   </div>
 </li>
