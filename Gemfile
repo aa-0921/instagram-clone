@@ -33,6 +33,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+  gem 'rails-erd'
 end
 
 group :development do
@@ -47,7 +48,6 @@ group :development do
   gem 'rubocop-airbnb'
   gem 'rubocop', '0.76.0'
   gem 'rubocop-rspec', '1.30.1'
-  gem 'rails-erd'
 end
 
 group :production do
