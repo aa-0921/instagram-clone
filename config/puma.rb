@@ -9,8 +9,13 @@ min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
 threads min_threads_count, max_threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-#
-port        ENV.fetch("PORT") { 3000 }
+
+# port        ENV.fetch("PORT") { 3000 }
+
+# ssl_bind "0.0.0.0", "3000", {
+#   cert: "config/certs/localhost.pem",
+#   key: "config/certs/localhost-key.pem",
+# }
 
 # Specifies the `environment` that Puma will run in.
 #
@@ -19,7 +24,7 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
-# Specifies the number of `workers` to boot in clustered mode.
+# Specifies the number of `workers` to boot in single mode
 # Workers are forked web server processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.
 # Workers do not work on JRuby or Windows (both of which do not support
@@ -36,3 +41,20 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+# workers Integer(ENV['WEB_CONCURRENCY'] || 2)
+# threads_count = Integer(ENV['RAILS_MAX_THREADS'] || 5)
+# threads threads_count, threads_count
+
+# preload_app!
+
+rackup DefaultRackup
+port ENV['PORT'] || 3000
+# environment ENV['RACK_ENV'] || 'development'
+
+on_worker_boot do
+  # Worker specific setup for Rails 4.1+
+  # See: https://devcenter.heroku.com/articles/
+  # deploying-rails-applications-with-the-puma-web-server#on-worker-boot
+  ActiveRecord::Base.establish_connection
+end

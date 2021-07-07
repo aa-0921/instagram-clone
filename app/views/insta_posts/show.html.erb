@@ -1,0 +1,79 @@
+<div id="insta_post-<%= @insta_post.id %>">
+
+  <%= link_to gravatar_for(@insta_post.user, size: 120), @insta_post.user, class: "user-name" %>
+  <span class="user">
+    <%= link_to "#{@insta_post.user.name}", @insta_post.user %>
+  </span>
+  <span class="insta_post_content">
+    <%= @insta_post.content %>
+    <%= image_tag @insta_post.picture.url %>
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(@insta_post.created_at) %> ago.
+    <% if current_user?(@insta_post.user) %>
+    <%= link_to "delete", @insta_post, method: :delete,
+                                    data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+  <div class="like-counter">
+    <span class="like-display">
+      <%= pluralize(@insta_post.likes.count, "like") %>
+    </span>
+  </div>
+</div>
+<h3>Comments</h3>
+<div class="comment_index">
+
+  <% @insta_post.comments.each do |comment| %>
+  <p>
+    <%= link_to gravatar_for(comment.user, size: 30), comment.user %>
+
+    <span>
+      <%= image_tag comment.picture.url if comment.picture? %>
+    </span>
+    <%= link_to "#{comment.user.name}", @user %>: <%= comment.body %>
+
+    <span class="timestamp">
+      ……Commented <%= time_ago_in_words(comment.created_at) %> ago.
+
+    </span>
+    <span class="batu">
+      <%= link_to "[削除]", [@insta_post, comment], method: :delete if current_user?(comment.user) %>
+
+      <%# <a> if current_user?(comment.user)</a> %>
+    </span>
+  </p>
+  <hr />
+  <% end %>
+</div>
+<div>
+  <%= link_to gravatar_for(current_user, size: 50), current_user %>
+  <h1><%= current_user.name %></h1>
+  <%= form_with(model: [@insta_post, @comment]) do |f| %>
+  <div class="area_cmnt">
+    <ul>
+      <div>
+        <%= f.text_area :body, placeholder: "コメントを入力", class: "comment_text", id: "text_area" %>
+      </div>
+      <span class="picture">
+        <%= f.file_field :picture, accept: 'image/jpeg, image/png' %>
+      </span>
+      <span>
+        <%= button_tag( class: "btn btn-default btn-sm") do %>
+        <%= content_tag :div, "", class: "glyphicon glyphicon-comment"%>
+        <% end %>
+      </span>
+    </ul>
+  </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $('#insta_post_picture').bind('change', function () {
+    var size_in_megabytes = this.files[0].size / 1024 / 1024;
+    if (size_in_megabytes > 5) {
+      alert('最大ファイルサイズは5MBです。ファイルを選択し直してください.');
+    }
+  });
+
+</script>

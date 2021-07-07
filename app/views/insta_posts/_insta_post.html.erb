@@ -1,0 +1,48 @@
+<li id="insta_post-<%= insta_post.id %>" data-insta_post-id="<%= insta_post.id %>" class="col-md-4">
+  <%#= link_to gravatar_for(insta_post.user, size: 50), insta_post.user %>
+  <%# <span class="user"><%= link_to insta_post.user.name, insta_post.user %>
+  <%# </span> %>
+  <span class="content">
+    <a class="btn" data-toggle="modal" data-target="#Modal-<%= insta_post.id %>">
+      <%= image_tag(insta_post.picture.url) %>
+    </a>
+    <span class="user"><%= link_to insta_post.user.name, insta_post.user %></span>
+    <%= insta_post.content %>
+  </span>
+  <div class="timestamp-and-like">
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(insta_post.created_at) %> ago.
+      <% if current_user?(insta_post.user) %>
+      <%= link_to "delete", insta_post, method: :delete,
+                              data: { confirm: "You sure?" } %>
+      <% end %>
+    </span>
+    <span class="like">
+      <%= render "likes/like", insta_post: insta_post  %>
+    </span>
+  </div>
+</li>
+
+<!--------------------modal-------------------->
+
+<div class="modal fade" id="Modal-<%= insta_post.id %>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Click to comment</h4>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <%= link_to image_tag(insta_post.picture.url, size: '450x450'), insta_post_path(id: insta_post.id) %>
+        <span class="content">
+          <span class="user"><%= link_to insta_post.user.name, insta_post.user %></span>
+          <%= insta_post.content %>
+        </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
